@@ -1,0 +1,19 @@
+---
+ - name: "Test user"
+   hosts: ansible-slave1
+   tasks:
+    - name: "Say hello1"
+      command: whoami
+      register: root_output
+
+    - name: "Print output"
+      debug: var=root_output
+
+    - name: "Say hello"
+      command: whoami
+      become_user: testing
+      register: testing_output     
+
+    - name: "Print output"
+      debug: var=testing_output
+
